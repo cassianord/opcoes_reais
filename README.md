@@ -1,8 +1,8 @@
-## Cálculo de opções reais utilizando árvores binomiais
+# Cálculo de opções reais utilizando árvores binomiais
 
 <br>
 
-#### **Setup**
+### **Setup**
 
 Abaixo, carregamos as bibliotecas necessárias. Também definimos a opção
 para não mostrar os resultados em notação científica.
@@ -20,7 +20,7 @@ obter a árvore binomial básica do ativo:
 
 <br>
 
-### **1ª Etapa: calcular a árvore binomial inicial (sem opções)**
+## **1ª Etapa: calcular a árvore binomial inicial (sem opções)**
 
 **Estabelecendo os parâmetros iniciais**
 
@@ -69,7 +69,7 @@ coluna, para construir uma matriz:
 
 <br>
 
-### **2ª Etapa: calculando as árvores com opções reais**
+## **2ª Etapa: calculando as árvores com opções reais**
 
 **Parâmetros gerais para as opções reais**
 
@@ -88,7 +88,7 @@ a seguir.
 
 <br>
 
-#### **Opção de Expansão**
+### **Opção de Expansão**
 
 No caso de uma expansão, é possível realizar um investimento adicional
 para elevar o valor do projeto. Precisamos, então, definir esses
@@ -133,7 +133,7 @@ Por fim, calculamos a árvore com a opção de expansão:
 
 <br>
 
-#### **Opção de Contração**
+### **Opção de Contração**
 
 No caso de uma contração, é possível reduzir a escala do projeto,
 diminuindo seu valor, mas obtendo um valor residual com a venda de parte
@@ -179,7 +179,7 @@ Por fim, calculamos a árvore com a opção de contração:
 
 <br>
 
-#### **Opção de Abandono**
+### **Opção de Abandono**
 
 Caso o cenário para o projeto seja muito desfavorável, é possível
 abandoná-lo. Isso cessa os fluxos de caixa futuros, mas possibilita
