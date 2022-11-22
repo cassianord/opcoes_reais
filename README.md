@@ -1,4 +1,4 @@
-### Cálculo de opções reais utilizando árvores binomiais
+## Cálculo de opções reais utilizando árvores binomiais
 
 <br>
 
