@@ -116,15 +116,15 @@ Por fim, calculamos a árvore com a opção de expansão:
     matriz_exp <- matrix(NaN, nrow = l, ncol = c) # Criar uma matriz de igual dimensão à original
     matriz_exp[, c] <- matriz_int_exp[, c] # Adicionar valores com expansão à última coluna (fim da árvore)
 
-    for(j in 1:c) {
+    for(j in (c-1):1) {
       
       for(i in 1:l) {
         
-        matriz_exp[i,c-j] <- ifelse(is.na(matriz_int_exp[i,c-j]), NA,
-                            max( (matriz_exp[i,c-j+1]*p + 
-                                   matriz_exp[i+1,c-j+1]*(1-p)) * exp(-rf*dt),
+        matriz_exp[i,j] <- ifelse(is.na(matriz_int_exp[i,j]), NA,
+                            max( (matriz_exp[i,j+1]*p + 
+                                   matriz_exp[i+1,j+1]*(1-p)) * exp(-rf*dt),
                                         
-                                       matriz_int_exp[i,c-j]))
+                                       matriz_int_exp[i,j]))
         # Seguindo a ordem reversa pelas colunas, calcular o valor de cada célula (desde que não NA originalmente)
         # como o valor presente da média ponderada dos nós que lhe sucedem, e depois escolher entre o máximo
         # deste valor e o valor da matriz intermediária
@@ -162,15 +162,15 @@ Por fim, calculamos a árvore com a opção de contração:
     matriz_con <- matrix(NaN, nrow = l, ncol = c) # Criar uma matriz de igual dimensão à original
     matriz_con[, c] <- matriz_int_con[, c] # Adicionar valores com contração à última coluna (fim da árvore)
 
-    for(j in 1:c) {
+    for(j in (c-1):1) {
       
       for(i in 1:l) {
         
-        matriz_con[i,c-j] <- ifelse(is.na(matriz_int_con[i,c-j]), NA,
-                                    max( (matriz_con[i,c-j+1]*p + 
-                                            matriz_con[i+1,c-j+1]*(1-p)) * exp(-rf*dt),
+        matriz_con[i,j] <- ifelse(is.na(matriz_int_con[i,j]), NA,
+                                    max( (matriz_con[i,j+1]*p + 
+                                            matriz_con[i+1,j+1]*(1-p)) * exp(-rf*dt),
                                          
-                                         matriz_int_con[i,c-j]))
+                                         matriz_int_con[i,j]))
         # Seguindo a ordem reversa pelas colunas, calcular o valor de cada célula (desde que não NA originalmente)
         # como o valor presente da média ponderada dos nós que lhe sucedem, e depois escolher entre o máximo
         # deste valor e o valor da matriz intermediária
@@ -206,15 +206,16 @@ Por fim, calculamos a árvore com a opção de abandono:
 
     matriz_aban <- matrix(NaN, nrow = l, ncol = c) # Criar uma matriz de igual dimensão à original
     matriz_aban[, c] <- matriz_int_aban[, c] # Adicionar valores com abandono à última coluna (fim da árvore)
-    for(j in 1:c) {
+
+    for(j in (c-1):1) {
       
       for(i in 1:l) {
         
-        matriz_aban[i,c-j] <- ifelse(is.na(matriz_int_aban[i,c-j]), NA,
-                                    max( (matriz_aban[i,c-j+1]*p + 
-                                            matriz_aban[i+1,c-j+1]*(1-p)) * exp(-rf*dt),
+        matriz_aban[i,j] <- ifelse(is.na(matriz_int_aban[i,j]), NA,
+                                    max( (matriz_aban[i,j+1]*p + 
+                                            matriz_aban[i+1,j+1]*(1-p)) * exp(-rf*dt),
                                          
-                                         matriz_int_aban[i,c-j]))
+                                         matriz_int_aban[i,j]))
         # Seguindo a ordem reversa pelas colunas, calcular o valor de cada célula (desde que não NA originalmente)
         # como o valor presente da média ponderada dos nós que lhe sucedem, e depois escolher entre o máximo
         # deste valor e o valor da matriz intermediária
