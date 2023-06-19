@@ -1,8 +1,8 @@
-### Cálculo de opções reais utilizando árvores binomiais
+# Cálculo de opções reais utilizando árvores binomiais
 
 <br>
 
-#### **Setup**
+### **Setup**
 
 Abaixo, carregamos as bibliotecas necessárias. Também definimos a opção
 para não mostrar os resultados em notação científica.
@@ -22,7 +22,7 @@ source("bintree.R")
 
 <br>
 
-### **1ª Etapa: calcular a árvore binomial inicial (sem opções)**
+## **1ª Etapa: calcular a árvore binomial inicial (sem opções)**
 
 **Estabelecendo os parâmetros iniciais**
 
@@ -69,7 +69,7 @@ matriz_valores <- t(as.matrix(spread(arvore2, row, S)[,-1]))
 
 <br>
 
-### **2ª Etapa: calculando as árvores com opções reais**
+## **2ª Etapa: calculando as árvores com opções reais**
 
 **Parâmetros gerais para as opções reais**
 
@@ -90,7 +90,7 @@ c <- ncol(matriz_valores) # Número de colunas da matriz da árvore binomial
 
 <br>
 
-#### **Opção de Expansão**
+### **Opção de Expansão**
 
 No caso de uma expansão, é possível realizar um investimento adicional
 para elevar o valor do projeto. Precisamos, então, definir esses
@@ -141,7 +141,7 @@ for(j in (c-1):1) {
 
 <br>
 
-#### **Opção de Contração**
+### **Opção de Contração**
 
 No caso de uma contração, é possível reduzir a escala do projeto,
 diminuindo seu valor, mas obtendo um valor residual com a venda de parte
@@ -193,7 +193,7 @@ for(j in (c-1):1) {
 
 <br>
 
-#### **Opção de Abandono**
+### **Opção de Abandono**
 
 Caso o cenário para o projeto seja muito desfavorável, é possível
 abandoná-lo. Isso cessa os fluxos de caixa futuros, mas possibilita
