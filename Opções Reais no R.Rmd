@@ -17,9 +17,9 @@ library(tidyr)
 options(scipen=999)
 ```
 
-Além disso, utilizaremos inicialmente a função `getBinomTree.R`, criada por [Nicolai Vicol](https://github.com/nicolaivicol/binomial-tree-options-R), para a obter a árvore binomial básica do ativo:
+Além disso, utilizaremos a função `bintree.R` para a obter a árvore binomial básica do ativo:
 ```{r eval=T}
-source("D:/getBinomTree.R")
+source("bintree.R")
 ```
 <br>
 
@@ -40,20 +40,16 @@ passos <- 10 # número de passos da árvore binomial
 
 **Calculando a árvore binomial inicial**
 
-Em seguida, vamos aplicar a função `getBinomTree.R` para cálculo da árvore binomial, considerando:
+Em seguida, vamos aplicar a função `bintree.R` para cálculo da árvore binomial, considerando:
 
 * S0: valor do ativo no tempo t=0
-* K: Preço de exercício
 * vol: volatilidade
 * dT: tempo até a maturidade (no caso de opções reais, vida do projeto)
 * r: taxa livre de risco
-* qdiv: taxa de dividendos (não aplicável em opções reais, definir como zero)
-* N_steps: número de passos da árvore
-* isPut: F=opção de compra (call); T=opção de venda (put) 
-* isAmerican: F:opção europeia, T: opção americana (sempre usar T em opções reais)
+* n_steps: número de passos da árvore
 
 ```{r eval=T}
-arvore <- getBinomTree(S0=VPL, K=VPL, vol=volat, dT=tempo, r=rf, qdiv=0, N_steps=passos, isPut=F, isAmerican=T)
+arvore <- bintree(S0=VPL, vol=volat, dT=tempo, r=rf, n_steps=passos)
 ```
 
 Posteriormente, estruturamos os valores com indexadores de linha e coluna, para construir uma matriz:
